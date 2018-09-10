@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "140466940027",
+    "firebase_url": "https://dcvsapp.firebaseio.com",
+    "project_id": "dcvsapp",
+    "storage_bucket": "dcvsapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140466940027:android:9f67eacbf7b63d19",
+        "android_client_info": {
+          "package_name": "au.org.nac.dcvsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140466940027-501t8dvb8ftc67m3npl8abp5a7mf8469.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.org.nac.dcvsapp",
+            "certificate_hash": "650b1bf8f8472c4c4c67fe76e10c26001b8b316c"
+          }
+        },
+        {
+          "client_id": "140466940027-ar21fvaqffrrma2aleor0bhdiabfbv56.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGbk_FIpbxP_BOSv2i6vpeaOoSwGiZuuo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140466940027-ar21fvaqffrrma2aleor0bhdiabfbv56.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
