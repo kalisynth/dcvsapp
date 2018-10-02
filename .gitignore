@@ -5,6 +5,6 @@
 .pub/
 
 build/
-android/app/google-services.json
 
 .flutter-plugins
+android/app/google-services.json
