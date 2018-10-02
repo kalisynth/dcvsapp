@@ -29,6 +29,8 @@ void main(){
 
         expect(scrollCheck.enabled, true);
       });
+
+
     });
 
     test('Change Scroll to disabled', (){
@@ -50,6 +52,44 @@ void main(){
       mainScreen.uiSetup();
 
       expect(isScrollEnabled, true);
+    });
+  });
+
+  group('Tablet Name', (){
+    test('initial tablet setup', (){
+      SharedPreferences.setMockInitialValues({});
+
+      final nameStatus = TabletNameStatus();
+
+      nameStatus.getTabletName();
+
+      new Timer(const Duration(milliseconds: 20), (){
+        print("Name Check: ${nameStatus.tabletName}");
+
+        expect(nameStatus.tabletName, "Not Set");
+      });
+    });
+
+    test('Set Tablet Name', (){
+      String tabletName = 'Test Tablet Name';
+
+      final nameStatus = TabletNameStatus();
+
+      nameStatus.changeTabletName(tabletName);
+
+      new Timer(const Duration(milliseconds: 20), (){
+        nameStatus.getTabletName();
+        String _TabletName = nameStatus.tabletName;
+        print("_Tabletname: $_TabletName tabletName: $tabletName");
+        expect(_TabletName, tabletName);
+      });
+    });
+
+    test('get Tablet Name' , (){
+      final nameStatus = TabletNameStatus();
+      String tabletName = 'Test Tablet Name';
+
+      expect(nameStatus.tabletName, tabletName);
     });
   });
 }

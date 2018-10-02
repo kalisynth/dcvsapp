@@ -1,8 +1,9 @@
 part of dcvsapp;
 
-class navigationLinks{
-  String NL_homeScreen = "/homeScreen";
-  String NL_chatScreen = "/chatScreen";
-  String NL_optionsScreen = "/optionsScreen";
-  String NL_funScreen = "/funScreen";
+class NavigationLinks{
+  String linkHomeScreen = "/homeScreen";
+  String linkChatScreen = "/chatScreen";
+  String linkOptionsScreen = "/optionsScreen";
+  String linkFunScreen = "/funScreen";
+  String linkMainScreen = "/mainScreen";
 }

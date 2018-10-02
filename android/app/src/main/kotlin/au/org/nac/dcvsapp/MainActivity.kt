@@ -26,22 +26,25 @@ class MainActivity(): FlutterActivity() {
           if(call.method == "openSkype"){
               openSkype()
           } else if(call.method == "callContact"){
-              _skypeUri = call.argument('skypeUri')
+              //text = call.argument("text");
+              //println("Skype Call: ${call.argument("text")}")
               try{
-                  makeSkypeCall(_skypeUri)
+                  makeSkypeCall(call.argument("text"))
               } catch (e: Exception){
-                  LOG.error("Skype Call Error: $e")
+                  println("Skype Call Error: $e")
               }
           }
       }
   }
 
+
     fun makeSkypeCall(mySkypeUri: String) {
         val skypeUri = Uri.parse(mySkypeUri)
+        println("Make Skype Call $skypeUri");
         val intent = Intent(Intent.ACTION_VIEW, skypeUri)
         intent.setComponent(ComponentName("com.skype.raider", "com.skype.raider.Main"))
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        context.startActivity(intent)
+        this.startActivity(intent)
     }
 
     fun isSkypeInstalled(context: Context): Boolean {

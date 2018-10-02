@@ -8,9 +8,10 @@ void main(){
     test('Initial Button Height Test', (){
       SharedPreferences.setMockInitialValues({});
       final buttonCheck = ButtonStyleCheck();
+      Timer timer;
 
       buttonCheck.getButtonHeight();
-      Timer _timer = new Timer(const Duration(milliseconds: 20), (){
+      timer = new Timer(const Duration(milliseconds: 20), (){
         print("Height Check: ${buttonCheck.heightValue}");
 
         expect(buttonCheck.heightValue, 10.0);
@@ -23,7 +24,7 @@ void main(){
 
       buttonSetup.changeHeight(changeValue);
 
-      Timer timer = new Timer(const Duration(milliseconds: 20), (){
+      new Timer(const Duration(milliseconds: 20), (){
         final buttonCheck = ButtonStyleCheck();
 
         expect(buttonCheck.heightValue, changeValue);

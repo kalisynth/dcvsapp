@@ -24,9 +24,18 @@ dependencies:
   #redux_epics: ^0.10.2
   firebase_storage: ^1.0.2
   cloud_firestore: ^0.8.0
+  device_info: ^0.2.1
+  flutter_appavailability: ^0.0.21
+  firebase_auth: ^0.5.20
+  google_sign_in: ^3.0.5
+  url_launcher: ^3.0.3
+  location: ^1.4.1
+  simple_permissions: ^0.1.2
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+  flutter_driver:
     sdk: flutter
 
 

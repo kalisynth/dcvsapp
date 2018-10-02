@@ -1,46 +1,71 @@
 library dcvsapp;
 
-//FLUTTER IMPORTS
+//IMPORTS-------------------------------
+//FLUTTER IMPORTS-----------------------
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-//3rd Party imports
+import 'dart:convert';
+//--------------------------------------
+//3rd Party imports---------------------------------------------------
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sqflite/sqflite.dart';
-
-//Google imports
+import 'package:sqflite/sqflite.dart' hide Transaction;
+import 'package:device_info/device_info.dart';
+import 'package:flutter_appavailability/flutter_appavailability.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:location/location.dart';
+import 'package:simple_permissions/simple_permissions.dart';
+//--------------------------------------------------------------------
+//Google imports-------------------------------------------------
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+//-------------------------------------------------------------------
+//-------------------------------------------------------------------
 
-//SCREENS
+//PARTS---------------------------------------------------------------
+//SCREENS----------------------------
 part 'screens/Home_Screen.dart';
 part 'screens/Options_Screen.dart';
 part 'screens/Fun_Screen.dart';
 part 'screens/Chat_Screen.dart';
-
-//INTERFACE
+part 'screens/Splash_Screen.dart';
+//-----------------------------------
+//INTERFACE-------------------------
 part 'interface/DCVS_Widgets.dart';
 part 'interface/DCVS_Syncs.dart';
-
-//Widget
+//----------------------------------
+//Utils---------------------------
+part 'utils/misc_utils.dart';
+part 'utils/authentication.dart';
+part 'utils/DCVS_DEVICE.dart';
+//--------------------------------
+//Widget---------------------------------------
 part 'interface/Widgets/ContactListItem.dart';
-
-//DATA
+part 'interface/Widgets/loading_indicator.dart';
+part 'interface/Widgets/skype_widget.dart';
+//-----------------------------------------------
+//DATA----------------------------
 part 'Data/DCVS_SharedKeys.dart';
 part 'Data/DCVS_NavLinks.dart';
 part 'Data/DefaultSettings.dart';
-
+//--------------------------------
 //Models
 part 'Data/Models/Contact.dart';
-part 'Data/Models/Tablet_Model.dart';
-
-//Providers
+part 'Data/Models/Device_Model.dart';
+part 'Data/Models/User_Model.dart';
+part 'Data/Models/skype_item.dart';
+//---------------------------------------------
+//Providers------------------------------------
 part 'Data/Providers/ContactProvider.dart';
-part 'Data/Providers/Tablet_Storage.dart';
+part 'Data/Providers/Data_Storage.dart';
+//---------------------------------------------
+//---------------------------------------------
 
-navigationLinks navLinks = new navigationLinks();
+NavigationLinks navLinks = new NavigationLinks();
 DCVSSyncs dcvsSyncs = new DCVSSyncs();
 DCVSSharedKeys dcvsKeys = new DCVSSharedKeys();
 DefaultSettings getDefault = new DefaultSettings();
@@ -55,12 +80,13 @@ class DCVSAPP extends StatelessWidget{
         fontFamily: 'Roboto',
         primaryColor: Colors.lightBlueAccent
       ),
-      home: new MainScreen(),
+      home: new SplashPage(),
       routes: <String, WidgetBuilder>{
-        navLinks.NL_homeScreen : (BuildContext context) => new HomeScreen(),
-        navLinks.NL_chatScreen : (BuildContext context) => new ChatScreen(),
-        navLinks.NL_optionsScreen : (BuildContext context) => new OptionsScreen(),
-        navLinks.NL_funScreen : (BuildContext context) => new FunScreen(),
+        navLinks.linkMainScreen : (BuildContext context) => new MainScreen(),
+        navLinks.linkHomeScreen : (BuildContext context) => new HomeScreen(),
+        navLinks.linkChatScreen : (BuildContext context) => new ChatScreen(),
+        navLinks.linkOptionsScreen : (BuildContext context) => new OptionsScreen(),
+        navLinks.linkFunScreen : (BuildContext context) => new FunScreen(),
       }
     );
   }

@@ -19,10 +19,16 @@ class ChatState extends State<ChatScreen>{
   double buttonHeight;
   double buttonMinWidth;
   String TAG = "CHATSCREEN";
+  FirebaseUser user;
 
   ContactProvider contactProvider;
 
+  ContactStore contactStore;
+  StreamSubscription<QuerySnapshot> contactSub;
 
+  List<SkypeItem> contacts;
+
+  Set<String> disabledContacts;
 
   Future<Null> showAddContactDialog(BuildContext context) async{
     return showDialog<Null>(
@@ -93,10 +99,18 @@ class ChatState extends State<ChatScreen>{
   }
 
   void openSkypeTest(){
-    try{
-      platform.invokeMethod('openSkype');
-    } on PlatformException catch (e){
-      print("failed to open skype $e");
+    AppAvailability.launchApp('com.skype.raider');
+  }
+
+  void testSkypeCall() async{
+    String contact = "coconutdcvs";
+    var url = "skype:$contact?call&video=true";
+
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      //dcvsUtils.
+      throw 'Could not launch $url';
     }
   }
 
@@ -107,8 +121,36 @@ class ChatState extends State<ChatScreen>{
   @override
   void initState() {
     uiSetup();
-    contactProvider = new ContactProvider();
     super.initState();
+
+    contacts = [];
+
+    disabledContacts = new Set();
+
+    _auth.currentUser().then((FirebaseUser user){
+      if(user == null){
+        Navigator.of(context).pushReplacementNamed('/');
+      } else {
+        contactStore = new ContactStore.forUser(user: user);
+        contactSub?.cancel();
+        contactSub = contactStore.skypeList().listen((QuerySnapshot snapshot){
+          final List<SkypeItem> contacts = snapshot.documents.map(ContactStore.fromDocument).toList(growable: false);
+          setState((){
+            this.contacts = contacts;
+          });
+        });
+
+        setState((){
+          this.user = user;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose(){
+    contactSub?.cancel();
+    super.dispose();
   }
 
   @override
@@ -118,6 +160,8 @@ class ChatState extends State<ChatScreen>{
       key: _scaffoldKey,
       appBar: new AppBar(
         title: new Text("Chat"),
+        backgroundColor: Colors.green,
+
       ),
       backgroundColor: Colors.green,
       body: new Container(
@@ -143,7 +187,9 @@ class ChatState extends State<ChatScreen>{
                       new Text("Add Contact"),
                     ],
                   ),
-                  onPressed:() => null,
+                  onPressed:(){
+                    showAddContactDialog(context);
+                  },
                 ),
                 new Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
@@ -162,6 +208,20 @@ class ChatState extends State<ChatScreen>{
                   ),
                   onPressed:() => openSkypeTest(),
                 ),
+                /*new MaterialButton(
+                  height: buttonHeight,
+                  minWidth: buttonMinWidth,
+                  color: Colors.lightBlueAccent,
+                  splashColor: Colors.greenAccent,
+                  textColor: Colors.white,
+                  child: new Row(
+                    children: <Widget>[
+                      new Icon(Icons.chat_bubble_outline),
+                      new Text("Test Call Skype"),
+                    ],
+                  ),
+                  onPressed:() => testSkypeCall(),
+                ),*/
               ]
           )
       ),
@@ -169,12 +229,16 @@ class ChatState extends State<ChatScreen>{
   }
 
   void saveContact() async{
-    Contact newContact = new Contact();
-    newContact.name = acd.contactName;
-    newContact.skypeName = acd.contactSkypeName;
+    contactStore = new ContactStore.forUser(user: user);
+
+    //TODO get device info check if contact is already added if not then add contact and save it
+    //Contact newContact = new Contact();
+    String skypeName = acd.contactName;
+    String skypeId = acd.contactSkypeName;
 
     try{
-      contactProvider.insertContact(newContact);
+      //contactProvider.insertContact(newContact);
+      contactStore.createSkype(skypeName, skypeId);
     } catch(e){
       print("[$TAG : ERROR] - Insert Contact Exception : $e");
     }

@@ -43,10 +43,10 @@ class DCVSOverlay{
     return new ButtonBar(
       alignment: MainAxisAlignment.center,
       children: <Widget>[
-        navBarButton(Icons.people, "CHAT", context, navLinks.NL_chatScreen, buttonColor: Colors.blueGrey),
-        navBarButton(Icons.games, "FUN", context, navLinks.NL_funScreen, buttonColor: Colors.amber),
-        navBarButton(Icons.settings, "OPTIONS", context, navLinks.NL_optionsScreen, buttonColor: Colors.green),
-        navBarButton(Icons.home, "HOME", context, navLinks.NL_homeScreen, buttonColor: Colors.redAccent),
+        navBarButton(Icons.people, "CHAT", context, navLinks.linkChatScreen, buttonColor: Colors.blueGrey),
+        navBarButton(Icons.games, "FUN", context, navLinks.linkFunScreen, buttonColor: Colors.amber),
+        navBarButton(Icons.settings, "OPTIONS", context, navLinks.linkOptionsScreen, buttonColor: Colors.green),
+        navBarButton(Icons.home, "HOME", context, navLinks.linkHomeScreen, buttonColor: Colors.redAccent),
       ],
     );
   }

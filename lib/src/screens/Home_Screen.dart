@@ -10,6 +10,9 @@ class MainScreenState extends State<MainScreen>with SingleTickerProviderStateMix
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   bool isScrollEnabled = true;
+  static const double tabPadding = 20.0;
+  static const double textScaleDbl = 3.0;
+  static const double iconSizeDbl = 40.0;
 
   void uiSetup(){
     final scrollCheck = ScrollCheck();
@@ -27,10 +30,17 @@ class MainScreenState extends State<MainScreen>with SingleTickerProviderStateMix
     });
   }
 
+  void newTablet() async{
+    String newUID;
+
+
+  }
+
   @override
   void initState() {
     uiSetup();
     super.initState();
+
   }
 
   @override
@@ -41,16 +51,64 @@ class MainScreenState extends State<MainScreen>with SingleTickerProviderStateMix
           key: _scaffoldKey,
           appBar: AppBar(
             title: new Text("DCVS Connect"),
+            backgroundColor: Colors.black,
+            textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.white
+            ),
             bottom: TabBar(
-              indicatorColor: Colors.green,
+              indicatorColor: Colors.white,
               labelColor: Colors.white,
-              unselectedLabelColor: Colors.blue,
-              isScrollable: isScrollEnabled,
+              unselectedLabelColor: Colors.blueGrey,
+              isScrollable: true,
               tabs: <Widget>[
-                Tab(text: "Home", icon: Icon(Icons.home),),
-                Tab(text: "Chat", icon: Icon(Icons.people),),
-                Tab(text: "Fun", icon: Icon(Icons.games),),
-                Tab(text: "Options", icon: Icon(Icons.settings)),
+                Tab(child: new Row(
+                  children:<Widget>[
+                    new Icon(Icons.home, size: iconSizeDbl,),
+                    new Text("Home",
+                        style: new TextStyle(
+                          color: Colors.lightBlueAccent,
+                        ),
+                      textScaleFactor: textScaleDbl,
+                    ),
+                    Padding(padding: const EdgeInsets.only(right: tabPadding)),
+                  ]
+                ),),
+                Tab(child: new Row(
+                    children:<Widget>[
+                      new Icon(Icons.people, size: iconSizeDbl),
+                      new Text("Chat",
+                        style: new TextStyle(
+                          color: Colors.green,
+                        ),
+                        textScaleFactor: textScaleDbl,
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: tabPadding)),
+                    ]
+                ),),
+                Tab(child: new Row(
+                    children:<Widget>[
+                      new Icon(Icons.games, size: iconSizeDbl),
+                      new Text("Fun",
+                        style: new TextStyle(
+                          color: Colors.amberAccent,
+                        ),
+                        textScaleFactor: textScaleDbl,
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: tabPadding)),
+                    ]
+                ),),
+                Tab(child: new Row(
+                    children:<Widget>[
+                      new Icon(Icons.settings, size: iconSizeDbl),
+                      new Text("Options",
+                        style: new TextStyle(
+                          color: Colors.redAccent,
+                        ),
+                        textScaleFactor: textScaleDbl,
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: tabPadding)),
+                    ]
+                ),),
               ],
             ),
           ),

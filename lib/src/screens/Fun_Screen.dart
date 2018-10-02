@@ -34,6 +34,10 @@ class FunState extends State<FunScreen>{
       key: _scaffoldKey,
       appBar: new AppBar(
         title: new Text("Fun"),
+        backgroundColor: Colors.amberAccent,
+        textTheme: Theme.of(context).textTheme.apply(
+            bodyColor: Colors.black
+        ),
       ),
       backgroundColor: Colors.amberAccent,
       body: new Container(
