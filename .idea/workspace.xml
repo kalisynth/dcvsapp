@@ -5,40 +5,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0831e89f-a456-473e-83a7-c3b6a65eb90c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/src/Data/Models/User_Model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/Data/Models/skype_item.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/Data/Providers/Data_Storage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/interface/Widgets/loading_indicator.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/interface/Widgets/skype_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/screens/Splash_Screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/utils/DCVS_DEVICE.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/utils/authentication.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/utils/misc_utils.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_driver/DCVSAppIntergrationTest.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/kotlin/au/org/nac/dcvsapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/kotlin/au/org/nac/dcvsapp/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/Data/DCVS_NavLinks.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/Data/DCVS_NavLinks.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/Data/DCVS_SharedKeys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/Data/DCVS_SharedKeys.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/Data/DefaultSettings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/Data/DefaultSettings.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/Data/Models/Tablet_Model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/Data/Models/Device_Model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/Data/Providers/Tablet_Storage.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/dcvsapp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/dcvsapp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/interface/DCVS_Widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/interface/DCVS_Widgets.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/screens/Chat_Screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/Chat_Screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/screens/Fun_Screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/Fun_Screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/screens/Home_Screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/Home_Screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/screens/Options_Screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/screens/Options_Screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/screens/home_screen_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/screens/home_screen_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_tests.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_tests.dart" afterDir="false" />
-    </list>
+    <list default="true" id="0831e89f-a456-473e-83a7-c3b6a65eb90c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +191,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/src/Data/Models/skype_item.dart">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
+                <state relative-caret-position="218">
                   <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
                 </state>
               </provider>
@@ -358,6 +325,12 @@
             <path>
               <item name="dcvs_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="dcvs_app" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dcvs_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dcvs_app" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -425,7 +398,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538449396189" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538449405892" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/src/utils" />
@@ -558,10 +531,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="676" y="0" width="697" height="735" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.41754916" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.41754916" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
@@ -572,14 +544,14 @@
       <window_info id="Captures" order="8" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49924356" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.73626375" visible="true" weight="0.3560732" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8033283" visible="true" weight="0.35081968" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.3295082" />
       <window_info anchor="bottom" id="Dart Analysis" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.26373628" side_tool="true" visible="true" weight="0.3560732" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.19667171" side_tool="true" visible="true" weight="0.35081968" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Logcat" order="11" sideWeight="0.64977306" weight="0.30163935" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49924356" weight="0.3295082" />
@@ -906,7 +878,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/Data/Models/skype_item.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="218">
           <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
         </state>
       </provider>
