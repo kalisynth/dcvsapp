@@ -58,8 +58,10 @@ class _SkypeWidgetState extends State<SkypeWidget>{
           icon: new Icon(Icons.phone),
           onPressed: widget.disabled ? null : widget.onCall,
         ),
+        new Text(
+          widget.contact.serviceProvider ? widget.contact.serviceProviderName : null,
+        )
       ]
-    )
+    );
   }
-
 }

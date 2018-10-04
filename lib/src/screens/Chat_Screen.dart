@@ -5,14 +5,23 @@ class ChatScreen extends StatefulWidget{
   State createState() => new ChatState();
 }
 
+enum TypeFilter{
+  ALL,
+  SERVICE,
+  NONSERVICE,
+}
+
 class AddContactData{
   String contactName;
   String contactSkypeName;
+  String serviceProviderName;
+  bool serviceProvider;
 }
 
 AddContactData acd = new AddContactData();
 
 class ChatState extends State<ChatScreen>{
+  TypeFilter typeFilter;
   GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   bool _autoValidate = false;
   static const platform = const MethodChannel('au.org.nac.io/skypeCalls');
@@ -20,6 +29,7 @@ class ChatState extends State<ChatScreen>{
   double buttonMinWidth;
   String TAG = "CHATSCREEN";
   FirebaseUser user;
+  bool checkValue = false;
 
   ContactProvider contactProvider;
 
@@ -64,6 +74,27 @@ class ChatState extends State<ChatScreen>{
                       acd.contactSkypeName = value;
                     },
                   ),
+                  new Row(
+                    children:<Widget>[
+                      new Text("Service Provider?"),
+                      new Checkbox(
+                        value: checkValue,
+                        onChanged: (bool newValue){
+                          checkValue = newValue;
+                        },
+                      )
+                    ]
+                  ),
+                  new TextFormField(
+                    decoration: const InputDecoration(
+                      border: const UnderlineInputBorder(),
+                      hintText: 'dcvs',
+                      labelText: 'Service Provider Name:',
+                    ),
+                    onSaved: (String value){
+                      acd.serviceProviderName = value;
+                    },
+                  ),
                   new FlatButton(
                     child: new Text("Add"),
                     onPressed:(){
@@ -83,6 +114,7 @@ class ChatState extends State<ChatScreen>{
   void _handleNameSubmitted(){
     final FormState form = _formKey.currentState;
     form.save();
+    acd.serviceProvider = checkValue;
     saveContact();
   }
 
@@ -151,6 +183,44 @@ class ChatState extends State<ChatScreen>{
   void dispose(){
     contactSub?.cancel();
     super.dispose();
+  }
+
+  void setFilter(TypeFilter filter){
+    setState((){
+      typeFilter = filter;
+    });
+  }
+
+  Widget buildToggleButton(TypeFilter type, String text){
+    final bool enabled = type == typeFilter;
+
+    Widget button = new MaterialButton(
+      key: new Key('filter-button-${text.toLowerCase()}'),
+      textColor: enabled ? Colors.black : Colors.grey,
+      child: new Text(text),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+      minWidth: 0.0,
+    );
+
+    if(enabled){
+      button = new Container(
+        decoration: new BoxDecoration(
+          border: new Border.all(),
+          borderRadius: new BorderRadius.circular(3.0),
+        ),
+        child: button,
+      );
+    }
+
+    return button;
+  }
+
+  Widget buildContent(int remainingActive){
+    if( user == null) {
+      return new LoadingIndicator();
+    } else {
+
+    }
   }
 
   @override
@@ -235,10 +305,12 @@ class ChatState extends State<ChatScreen>{
     //Contact newContact = new Contact();
     String skypeName = acd.contactName;
     String skypeId = acd.contactSkypeName;
+    bool isServiceProvider = acd.serviceProvider;
+    String newServiceProviderName = acd.serviceProviderName;
 
     try{
       //contactProvider.insertContact(newContact);
-      contactStore.createSkype(skypeName, skypeId);
+      contactStore.createSkype(skypeName, skypeId, isServiceProvider, newServiceProviderName);
     } catch(e){
       print("[$TAG : ERROR] - Insert Contact Exception : $e");
     }

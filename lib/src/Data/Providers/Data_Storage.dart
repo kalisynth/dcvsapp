@@ -275,13 +275,15 @@ class ContactStore{
     return GeneralStorage().generateListFromCollectionWithQuery(skypeCollection, 'userId', this.user.uid);
   }
 
-  Future<SkypeItem> createSkype(String skypeName, String skypeId) async{
+  Future<SkypeItem> createSkype(String skypeName, String skypeId, bool isSp, String spName) async{
     final TransactionHandler createTransaction = (Transaction tx) async{
       final DocumentSnapshot newDoc = await tx.get(skypeCollection.document());
       final SkypeItem newContact = new SkypeItem(
         id: newDoc.documentID,
         skypeName: skypeName,
-        skypeId: skypeId
+        skypeId: skypeId,
+        serviceProvider: isSp,
+        serviceProviderName: spName,
       );
       final Map<String, dynamic> data = _toMap(newContact, {
         'created' : new DateTime.now().toUtc().toString()

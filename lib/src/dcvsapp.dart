@@ -23,7 +23,7 @@ import 'package:simple_permissions/simple_permissions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-//-------------------------------------------------------------------
+//----------------  ---------------------------------------------------
 //-------------------------------------------------------------------
 
 //PARTS---------------------------------------------------------------
