@@ -47,6 +47,7 @@ part 'utils/DCVS_DEVICE.dart';
 part 'interface/Widgets/ContactListItem.dart';
 part 'interface/Widgets/loading_indicator.dart';
 part 'interface/Widgets/skype_widget.dart';
+part 'interface/Widgets/contact_header.dart';
 //-----------------------------------------------
 //DATA----------------------------
 part 'Data/DCVS_SharedKeys.dart';

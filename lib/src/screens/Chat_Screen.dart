@@ -215,16 +215,38 @@ class ChatState extends State<ChatScreen>{
     return button;
   }
 
-  Widget buildContent(int remainingActive){
+  Widget buildContent(BuildContext context){
     if( user == null) {
       return new LoadingIndicator();
     } else {
+      final bool onlyServiceProvider = typeFilter == TypeFilter.SERVICE;
+      final List<SkypeItem> visibleContacts =
+          typeFilter == TypeFilter.ALL ? contacts : contacts.where((t) => t.serviceProvider != onlyServiceProvider).toList(growable: false);
 
+      final bool allService = contacts.isNotEmpty;
+
+      return new Column(
+        children: <Widget>[
+          new ContactHeaderWidget(
+            key: new Key('contact-header'),
+            addContact:() => showAddContactDialog(context),
+          ),
+          new Expanded(
+            flex: 2,
+            child: new ListView.builder(
+              key: const Key('contact-list'),
+              itemCount: visibleContacts.length,
+              itemBuilder: _buildContactItem(visibleContacts),
+            )
+          )
+        ]
+      );
     }
   }
 
   @override
   Widget build(BuildContext context){
+    final ThemeData themeData = Theme.of(context);
     final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     return new Scaffold(
       key: _scaffoldKey,
@@ -245,7 +267,8 @@ class ChatState extends State<ChatScreen>{
                 new Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
                 ),
-                new MaterialButton(
+                buildContent(context),
+                /*new MaterialButton(
                   height: buttonHeight,
                   minWidth: buttonMinWidth,
                   color: Colors.blue,
@@ -260,9 +283,12 @@ class ChatState extends State<ChatScreen>{
                   onPressed:(){
                     showAddContactDialog(context);
                   },
-                ),
+                ),*/
                 new Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
+                ),
+        bottomNavigationBar: new Padding(
+
                 ),
                 new MaterialButton(
                   height: buttonHeight,
