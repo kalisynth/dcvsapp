@@ -72,7 +72,7 @@ class FunState extends State<FunScreen>{
                       new Icon(Icons.radio),
                       new Text("Radio",
                         style: new TextStyle(
-                          color: Colors.amberAccent,
+                          color: Colors.red,
                         ),
                       ),
                       Padding(padding: const EdgeInsets.only(right: 10.0)),
@@ -83,9 +83,9 @@ class FunState extends State<FunScreen>{
           ),
           body: new TabBarView(
               children: <Widget>[
-                new HomeScreen(),
-                new ChatScreen(),
-                new FunScreen(),
+                new GamesScreen(),
+                new RadioScreen(),
+                new WebScreen(),
               ]
           ),
         )

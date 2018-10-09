@@ -8,9 +8,11 @@ class GamesScreen extends StatefulWidget{
 class GamesState extends State<GamesScreen>{
   double buttonHeight;
   double buttonMinWidth;
-  String tabletName;
 
-  String tag = "OPTIONS";
+  String tag = "GAMESSCREEN";
+
+  Color bgColor = DefaultSettings().gamesBGColor;
+  Color fntColor = DefaultSettings().gamesFontColor;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
@@ -36,143 +38,40 @@ class GamesState extends State<GamesScreen>{
     }
   }
 
-  Future<Null> setCurrentTabletName() async{
-    String _tabletName = await dcvsSyncs.getSharedString('tabletName');
-    if(_tabletName.isEmpty || _tabletName == null){
-      _tabletName = " ";
-    }
-    setState((){
-      tabletName = _tabletName;
-    });
-  }
-
   @override
   void initState() {
     uiSetup();
     super.initState();
   }
 
+  void addGame(){
+
+  }
+
   @override
   Widget build(BuildContext context){
-
-    void setSwipe() async{
-      bool swipeEnabled = await dcvsSyncs.getSharedBool(dcvsKeys.key_swipeToNav);
-      Utils().printInfo(tag, "Swipe $swipeEnabled");
-      bool swipeSet;
-
-      if(swipeEnabled == null){
-        swipeEnabled = true;
-      }
-
-      if(swipeEnabled){
-        swipeSet = await dcvsSyncs.setSharedBool(dcvsKeys.key_swipeToNav, false);
-      } else {
-        swipeSet = await dcvsSyncs.setSharedBool(dcvsKeys.key_swipeToNav, true);
-      }
-
-      if(swipeSet){
-        showInSnackBar(_scaffoldKey, "Swipe Options Set");
-      }
-    }
 
     return new Scaffold(
       key: _scaffoldKey,
       appBar: new AppBar(
-        title: new Text("Options"),
-        backgroundColor: Colors.redAccent,
+        title: new Text("Games"),
+        backgroundColor: bgColor,
         textTheme: Theme.of(context).textTheme.apply(
-            bodyColor: Colors.black
+            bodyColor: fntColor,
         ),
       ),
-      backgroundColor: Colors.redAccent,
+      backgroundColor: bgColor,
       body: new Container(
-          decoration: new BoxDecoration(
-              image: new DecorationImage(
-                  image: new AssetImage("assets/images/backgrounds/options_bg.png")
-              )
-          ),
           child: new Column(
               children: <Widget>[
-                new Text('Tablet Name is $tabletName'),
-                new MaterialButton(
-                  height: buttonHeight,
-                  minWidth: buttonMinWidth,
-                  color: Colors.black,
-                  splashColor: Colors.amber,
-                  textColor: Colors.white,
-                  child: new Row(
-                    children: <Widget>[
-                      new Text("Set Swipe to Navigate"),
-                    ],
-                  ),
-                  onPressed:() => setSwipe(),
-                ),
+                new Text('List of Games'),
+                new FlatButton(
+                  child: new Text("Add Game"),
+                  onPressed: () => addGame(),
+                )
               ]
           )
       ),
-    );
-  }
-
-  void saveTabletName() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('tabletName', tabletName);
-    print('set tabletName to ${prefs.getString('tabletName')}');
-  }
-
-  void _handleNameSubmit(){
-    final FormState form = _formKey.currentState;
-
-    if(!form.validate()){
-      Utils().printError(tag, "Form not validated");
-      showInSnackBar(_scaffoldKey, "Fix Errors in Submission");
-    } else {
-      Utils().printInfo(tag, "form Validated");
-      form.save();
-    }
-  }
-
-  Future<Null> saveNewTabletName() async{
-    return showDialog(
-        context: context,
-        barrierDismissible: true,
-        builder: (BuildContext context){
-          return new AlertDialog(
-              title: new Text("Name of Tablet"),
-              content: new SingleChildScrollView(
-                  child: new Form(
-                      key: _formKey,
-                      child: new Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            new TextFormField(
-                                decoration: const InputDecoration(
-                                  border: const UnderlineInputBorder(),
-                                  hintText: 'Enter Tablet Name:',
-                                  labelText: 'Name:',
-                                ),
-                                onSaved:(String value){
-                                  print("Get $value");
-                                  tabletName = value;
-                                }
-                            ),
-                            new FlatButton(
-                                child: new Row(
-                                  children: <Widget>[
-                                    new Text('Save'),
-                                    new Icon(Icons.save)
-                                  ],
-                                ),
-                                onPressed:(){
-                                  _handleNameSubmit();
-                                  Navigator.of(context).pop();
-                                }
-                            )
-                          ]
-                      )
-                  )
-              )
-          );
-        }
     );
   }
 }
