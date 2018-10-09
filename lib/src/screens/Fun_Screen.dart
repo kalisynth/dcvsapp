@@ -30,78 +30,65 @@ class FunState extends State<FunScreen>{
   @override
   Widget build(BuildContext context){
     final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-    return new Scaffold(
-      key: _scaffoldKey,
-      appBar: new AppBar(
-        title: new Text("Fun"),
-        backgroundColor: Colors.amberAccent,
-        textTheme: Theme.of(context).textTheme.apply(
-            bodyColor: Colors.black
-        ),
-      ),
-      backgroundColor: Colors.amberAccent,
-      body: new Container(
-          decoration: new BoxDecoration(
-              image: new DecorationImage(
-                  image: new AssetImage("assets/images/backgrounds/fun_bg.png")
-              )
-          ),
-          child: new Column(
-              children: <Widget>[
-                new Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                ),
-                new MaterialButton(
-                  height: buttonHeight,
-                  minWidth: buttonMinWidth,
-                  color: Colors.green,
-                  splashColor: Colors.amber,
-                  textColor: Colors.black,
-                  child: new Row(
-                    children: <Widget>[
+    return new DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          key: _scaffoldKey,
+          appBar: AppBar(
+            backgroundColor: Colors.amberAccent,
+            textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: Colors.white
+            ),
+            bottom: TabBar(
+              indicatorColor: Colors.white,
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.blueGrey,
+              isScrollable: true,
+              tabs: <Widget>[
+                Tab(child: new Row(
+                    children:<Widget>[
                       new Icon(Icons.games),
-                      new Text("Games"),
-                    ],
-                  ),
-                  onPressed:() => null,
-                ),
-                new Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                ),
-                new MaterialButton(
-                  height: buttonHeight,
-                  minWidth: buttonMinWidth,
-                  color: Colors.blueGrey,
-                  splashColor: Colors.amber,
-                  textColor: Colors.black,
-                  child: new Row(
-                    children: <Widget>[
+                      new Text("Games",
+                        style: new TextStyle(
+                          color: Colors.lightGreen,
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: 10.0)),
+                    ]
+                ),),
+                Tab(child: new Row(
+                    children:<Widget>[
                       new Icon(Icons.web),
-                      new Text("Web"),
-                    ],
-                  ),
-                  onPressed:() => null,
-                ),
-                new Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                ),
-                new MaterialButton(
-                  height: buttonHeight,
-                  minWidth: buttonMinWidth,
-                  color: Colors.yellow,
-                  splashColor: Colors.amber,
-                  textColor: Colors.black,
-                  child: new Row(
-                    children: <Widget>[
+                      new Text("Web",
+                        style: new TextStyle(
+                          color: Colors.green,
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: 10.0)),
+                    ]
+                ),),
+                Tab(child: new Row(
+                    children:<Widget>[
                       new Icon(Icons.radio),
-                      new Text("Radio"),
-                    ],
-                  ),
-                  onPressed:() => null,
-                ),
+                      new Text("Radio",
+                        style: new TextStyle(
+                          color: Colors.amberAccent,
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: 10.0)),
+                    ]
+                ),),
+              ],
+            ),
+          ),
+          body: new TabBarView(
+              children: <Widget>[
+                new HomeScreen(),
+                new ChatScreen(),
+                new FunScreen(),
               ]
-          )
-      ),
+          ),
+        )
     );
   }
 }

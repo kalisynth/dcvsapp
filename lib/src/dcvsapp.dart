@@ -23,7 +23,7 @@ import 'package:simple_permissions/simple_permissions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-//----------------  ---------------------------------------------------
+//--------------------------------------------------------------------
 //-------------------------------------------------------------------
 
 //PARTS---------------------------------------------------------------
@@ -33,6 +33,9 @@ part 'screens/Options_Screen.dart';
 part 'screens/Fun_Screen.dart';
 part 'screens/Chat_Screen.dart';
 part 'screens/Splash_Screen.dart';
+part 'screens/fun_sub_screens/games_screen.dart';
+part 'screens/fun_sub_screens/radio_web_screen.dart';
+part 'screens/fun_sub_screens/web_screen.dart';
 //-----------------------------------
 //INTERFACE-------------------------
 part 'interface/DCVS_Widgets.dart';
@@ -43,28 +46,25 @@ part 'utils/misc_utils.dart';
 part 'utils/authentication.dart';
 part 'utils/DCVS_DEVICE.dart';
 //--------------------------------
-//Widget---------------------------------------
-part 'interface/Widgets/ContactListItem.dart';
+//Widget-----------------------------------------
 part 'interface/Widgets/loading_indicator.dart';
 part 'interface/Widgets/skype_widget.dart';
 part 'interface/Widgets/contact_header.dart';
 //-----------------------------------------------
-//DATA----------------------------
+//DATA-------------------------------------------
 part 'Data/DCVS_SharedKeys.dart';
 part 'Data/DCVS_NavLinks.dart';
 part 'Data/DefaultSettings.dart';
-//--------------------------------
-//Models
-part 'Data/Models/Contact.dart';
+//----------------------------------------------
+//Models----------------------------------------
 part 'Data/Models/Device_Model.dart';
 part 'Data/Models/User_Model.dart';
 part 'Data/Models/skype_item.dart';
-//---------------------------------------------
-//Providers------------------------------------
-part 'Data/Providers/ContactProvider.dart';
+//----------------------------------------------
+//Providers-------------------------------------
 part 'Data/Providers/Data_Storage.dart';
-//---------------------------------------------
-//---------------------------------------------
+//----------------------------------------------
+//----------------------------------------------
 
 NavigationLinks navLinks = new NavigationLinks();
 DCVSSyncs dcvsSyncs = new DCVSSyncs();

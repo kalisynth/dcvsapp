@@ -11,14 +11,7 @@ class ContactHeaderWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     final List<Widget> children = <Widget>[];
-
-    children.add(new IconButton(
-      icon: new Icon(
-        Icons.add,
-      ),
-      alignment: Alignment.bottomRight,
-      onPressed: this.addContact,
-    ));
+    children.add(new Text("Name | Skype Id | Service Provider"));
 
     return new Padding(
       padding: new EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),

@@ -286,6 +286,7 @@ class ContactStore{
         serviceProviderName: spName,
       );
       final Map<String, dynamic> data = _toMap(newContact, {
+        'userId' : this.user.uid,
         'created' : new DateTime.now().toUtc().toString()
       });
       await tx.set(newDoc.reference, data);
