@@ -34,7 +34,7 @@ part 'screens/Fun_Screen.dart';
 part 'screens/Chat_Screen.dart';
 part 'screens/Splash_Screen.dart';
 part 'screens/fun_sub_screens/games_screen.dart';
-part 'screens/fun_sub_screens/radio_web_screen.dart';
+part 'screens/fun_sub_screens/radio_screen.dart';
 part 'screens/fun_sub_screens/web_screen.dart';
 //-----------------------------------
 //INTERFACE-------------------------
@@ -60,6 +60,7 @@ part 'Data/DefaultSettings.dart';
 part 'Data/Models/Device_Model.dart';
 part 'Data/Models/User_Model.dart';
 part 'Data/Models/skype_item.dart';
+part 'Data/Models/game_item.dart';
 //----------------------------------------------
 //Providers-------------------------------------
 part 'Data/Providers/Data_Storage.dart';

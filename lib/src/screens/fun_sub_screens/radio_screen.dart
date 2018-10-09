@@ -8,9 +8,11 @@ class RadioScreen extends StatefulWidget{
 class RadioState extends State<RadioScreen>{
   double buttonHeight;
   double buttonMinWidth;
-  String tabletName;
 
   String tag = "RADIOSCREEN";
+
+  Color bgColor = DefaultSettings().radioBGColor;
+  Color fntColor = DefaultSettings().radioFontColor;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
@@ -48,12 +50,12 @@ class RadioState extends State<RadioScreen>{
       key: _scaffoldKey,
       appBar: new AppBar(
         title: new Text("Radio"),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: bgColor,
         textTheme: Theme.of(context).textTheme.apply(
-            bodyColor: Colors.black
+            bodyColor: fntColor,
         ),
       ),
-      backgroundColor: Colors.redAccent,
+      backgroundColor: bgColor,
       body: new Container(
           child: new Column(
               children: <Widget>[

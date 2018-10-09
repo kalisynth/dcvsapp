@@ -13,5 +13,6 @@ class DefaultSettings{
   final Color gamesFontColor = Colors.yellow;
   final Color radioBGColor = Colors.yellow;
   final Color radioFontColor = Colors.green;
-  final Color webBGColor = Colors.blueGray;
+  final Color webBGColor = Colors.blueGrey;
+  final Color webFontColor = Colors.white;
 }
