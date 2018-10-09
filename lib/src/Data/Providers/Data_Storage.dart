@@ -5,6 +5,7 @@ final Firestore db = Firestore.instance;
 final CollectionReference deviceCollection = db.collection('devices');
 final CollectionReference userCollection = db.collection('users');
 final CollectionReference skypeCollection = db.collection('contacts');
+final CollectionReference gameCollection = db.collection('games');
 
 class GeneralStorage{
   String TAG = "GENERALSTORE";
@@ -321,5 +322,34 @@ class ContactStore{
       print('[$TAG : ERROR] $e');
       return false;
     });
+  }
+}
+
+class GameStore{
+  final FirebaseUser user;
+
+  String TAG = "GAMESTORE";
+
+  GameStore.forUser({
+    @required this.user
+}) : assert(user != null);
+
+  static GameItem fromDocument(DocumentSnapshot document) => _fromMap(document.data);
+
+  static GameItem _fromMap(Map<String, dynamic> data) => new GameItem.fromMap(data);
+
+  Map<String, dynamic> _toMap(GameItem item, [Map<String, dynamic> other]){
+    final Map<String, dynamic> result = {};
+
+    if(other != null){
+      result.addAll(other);
+    }
+    result.addAll(item.toMap());
+
+    return result;
+  }
+
+  Future<QuerySnapshot> gamesList(){
+    return GeneralStorage().generatelistFromCollection()
   }
 }
