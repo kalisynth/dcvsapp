@@ -30,65 +30,29 @@ class FunState extends State<FunScreen>{
   @override
   Widget build(BuildContext context){
     final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-    return new DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          key: _scaffoldKey,
-          appBar: AppBar(
-            backgroundColor: Colors.amberAccent,
-            textTheme: Theme.of(context).textTheme.apply(
-                bodyColor: Colors.white
-            ),
-            bottom: TabBar(
-              indicatorColor: Colors.white,
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.blueGrey,
-              isScrollable: true,
-              tabs: <Widget>[
-                Tab(child: new Row(
-                    children:<Widget>[
-                      new Icon(Icons.games),
-                      new Text("Games",
-                        style: new TextStyle(
-                          color: Colors.lightGreen,
-                        ),
-                      ),
-                      Padding(padding: const EdgeInsets.only(right: 10.0)),
-                    ]
-                ),),
-                Tab(child: new Row(
-                    children:<Widget>[
-                      new Icon(Icons.web),
-                      new Text("Web",
-                        style: new TextStyle(
-                          color: Colors.green,
-                        ),
-                      ),
-                      Padding(padding: const EdgeInsets.only(right: 10.0)),
-                    ]
-                ),),
-                Tab(child: new Row(
-                    children:<Widget>[
-                      new Icon(Icons.radio),
-                      new Text("Radio",
-                        style: new TextStyle(
-                          color: Colors.red,
-                        ),
-                      ),
-                      Padding(padding: const EdgeInsets.only(right: 10.0)),
-                    ]
-                ),),
-              ],
-            ),
+    return new Scaffold(
+      body: new Column(
+        children: <Widget>[
+          new FlatButton(
+            child: new Text("Games"),
+            onPressed:(){
+              Navigator.of(context).pushNamed(navLinks.linkGamesScreen);
+          }
           ),
-          body: new TabBarView(
-              children: <Widget>[
-                new GamesScreen(),
-                new RadioScreen(),
-                new WebScreen(),
-              ]
+          new FlatButton(
+              child: new Text("Radio"),
+              onPressed:(){
+                Navigator.of(context).pushNamed(navLinks.linkRadioScreen);
+              }
           ),
-        )
+          new FlatButton(
+              child: new Text("Web"),
+              onPressed:(){
+                Navigator.of(context).pushNamed(navLinks.linkWebScreen);
+              }
+          ),
+        ]
+      )
     );
   }
 }

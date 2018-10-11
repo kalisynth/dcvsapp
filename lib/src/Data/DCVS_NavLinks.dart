@@ -6,4 +6,7 @@ class NavigationLinks{
   String linkOptionsScreen = "/optionsScreen";
   String linkFunScreen = "/funScreen";
   String linkMainScreen = "/mainScreen";
+  String linkGamesScreen = "/gamesScreen";
+  String linkWebScreen = "/webScreen";
+  String linkRadioScreen = "/radioScreen";
 }

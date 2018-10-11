@@ -349,7 +349,36 @@ class GameStore{
     return result;
   }
 
-  Future<QuerySnapshot> gamesList(){
-    return GeneralStorage().generatelistFromCollection()
+  Stream<QuerySnapshot> gamesList(){
+    return GeneralStorage().generateListFromCollectionWithQuery(gameCollection, 'userId', this.user.uid);
+  }
+
+  Future<GameItem> createGame(String userId, String gameName, String gameUri) async{
+    final TransactionHandler createTransaction = (Transaction tx) async{
+      final DocumentSnapshot newDoc = await tx.get(gameCollection.document());
+      final GameItem newGame = new GameItem(
+        id: newDoc.documentID,
+        gameName: gameName,
+        gameUri: gameUri,
+      );
+      final Map<String, dynamic> data = _toMap(newGame, {
+        'userId' : this.user.uid,
+        'created' : new DateTime.now().toUtc().toString()
+      });
+      await tx.set(newDoc.reference, data);
+
+      return data;
+    };
+
+    return db.runTransaction(createTransaction)
+        .then(_fromMap)
+        .catchError((e){
+          print('dart error: $e');
+          return null;
+    });
+  }
+
+  Future<bool> deleteGame(String id) async{
+    return GeneralStorage().deleteFromCollection(gameCollection, id);
   }
 }

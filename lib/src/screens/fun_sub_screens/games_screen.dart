@@ -17,6 +17,8 @@ class GamesState extends State<GamesScreen>{
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
+  bool _autoValidate = false;
+
   List<Map<String, String>> installedApps;
   List<Map<String, String>> iOSApps = [
     {
@@ -46,6 +48,34 @@ class GamesState extends State<GamesScreen>{
 
   void addGame(){
 
+  }
+
+  Future<Null> showAddGamePopup(BuildContext context) async{
+    return showDialog<Null>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context){
+        return new AlertDialog(
+          title: new Text("Add Game"),
+          content: new SingleChildScrollView(
+            child: new Form(
+              key: _formKey,
+              autovalidate: _autoValidate,
+              child: new Column(
+                children:<Widget>[
+                  new TextFormField(
+                    decoration: const InputDecoration(
+                      border: const UnderlineInputBorder(),
+
+                    )
+                  )
+                ]
+              )
+            )
+          )
+        )
+      }
+    )
   }
 
   @override

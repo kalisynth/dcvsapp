@@ -89,6 +89,7 @@ class DCVSAPP extends StatelessWidget{
         navLinks.linkChatScreen : (BuildContext context) => new ChatScreen(),
         navLinks.linkOptionsScreen : (BuildContext context) => new OptionsScreen(),
         navLinks.linkFunScreen : (BuildContext context) => new FunScreen(),
+        navLinks.linkGamesScreen : (BuildContext context) => new GamesScreen(),
       }
     );
   }
