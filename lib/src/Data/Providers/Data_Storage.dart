@@ -353,7 +353,7 @@ class GameStore{
     return GeneralStorage().generateListFromCollectionWithQuery(gameCollection, 'userId', this.user.uid);
   }
 
-  Future<GameItem> createGame(String userId, String gameName, String gameUri) async{
+  Future<GameItem> createGame(String gameName, String gameUri) async{
     final TransactionHandler createTransaction = (Transaction tx) async{
       final DocumentSnapshot newDoc = await tx.get(gameCollection.document());
       final GameItem newGame = new GameItem(
