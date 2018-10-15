@@ -23,6 +23,8 @@ class GamesState extends State<GamesScreen>{
 
   GameStore gameStore;
 
+  List<Map<String, String>> _installedApps;
+
   Color bgColor = DefaultSettings().gamesBGColor;
   Color fntColor = DefaultSettings().gamesFontColor;
 
@@ -51,12 +53,20 @@ class GamesState extends State<GamesScreen>{
     }
   }
 
+  void getAppSync() async{
+    if(isAndroid){
+      _installedApps = await AppAvailability.getInstalledApps();
+    }
+  }
+
   @override
   void initState() {
     uiSetup();
     super.initState();
 
     isAndroid = Platform.isAndroid;
+
+    getAppSync();
 
     _auth.currentUser().then((FirebaseUser user) {
       if (user == null) {
@@ -77,6 +87,19 @@ class GamesState extends State<GamesScreen>{
 
     String _gameName = gameData.name;
     String _gameUri = gameData.uri;
+
+    try{
+      gameStore.createGame(_gameName, _gameUri);
+    } catch(e){
+      print("[%$TAG : ERROR] - Insert Game Exception $e");
+    }
+  }
+
+  void addGameFromList(String gameName, String appName){
+    gameStore = new GameStore.forUser(user: user);
+
+    String _gameName = gameName;
+    String _gameUri = appName;
 
     try{
       gameStore.createGame(_gameName, _gameUri);
@@ -139,13 +162,35 @@ class GamesState extends State<GamesScreen>{
     );
   }
 
-  Future<void> getApps() async{
-    List<Map<String, String>> _installedApps;
+  Future<Null> getApps() async{
 
     if(isAndroid){
-      _installedApps = await AppAvailability.getInstalledApps();
 
-
+      return showDialog<Null>(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context){
+          return new AlertDialog(
+            title: new Text("Add Apps"),
+            content: new Container(
+              child: new ListView.builder(
+                  itemCount: installedApps == null ? 0 : installedApps.length,
+                  itemBuilder: (context, index){
+                    return ListTile(
+                        title: Text(installedApps[index]['app_name']),
+                        trailing: IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () {
+                              addGameFromList(installedApps[index]['app_name'], installedApps[index]['package_name']);
+                            }
+                        )
+                    );
+                  }
+              )
+            )
+            );
+        }
+      );
     }
   }
 
