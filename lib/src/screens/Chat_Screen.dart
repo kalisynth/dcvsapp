@@ -27,7 +27,7 @@ class ChatState extends State<ChatScreen> {
   StreamSubscription<QuerySnapshot> contactSub;
   List<SkypeItem> contacts;
 
-  final chatColor = DefaultSettings().chatColor;
+  final _chatColor = DefaultSettings().chatColor;
 
   //Add Contact popup form
   Future<Null> showAddContactDialog(BuildContext context) async {
@@ -182,12 +182,12 @@ class ChatState extends State<ChatScreen> {
 
     return new Scaffold(
       key: _scaffoldKey,
-      backgroundColor: DefaultSettings().chatColor,
+      backgroundColor: _chatColor,
       body: new Container(
         decoration: new BoxDecoration(
             image: new DecorationImage(
                 image:
-                    new AssetImage("assets/images/backgrounds/chat_bg.png"))),
+                    new AssetImage("assets/images/backgrounds/chataur_bg.png"))),
         child: buildContent(),
       ),
       bottomNavigationBar: new Padding(

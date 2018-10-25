@@ -9,6 +9,8 @@ class FunState extends State<FunScreen>{
   double buttonHeight;
   double buttonMinWidth;
 
+  final _funColor = DefaultSettings().funColor;
+
   void uiSetup() async{
     buttonHeight = await dcvsSyncs.getSharedDouble(dcvsKeys.key_buttonheight);
     buttonMinWidth = await dcvsSyncs.getSharedDouble(dcvsKeys.key_buttonWidth);
@@ -31,27 +33,35 @@ class FunState extends State<FunScreen>{
   Widget build(BuildContext context){
     final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     return new Scaffold(
-      body: new Column(
-        children: <Widget>[
-          new FlatButton(
-            child: new Text("Games"),
-            onPressed:(){
-              Navigator.of(context).pushNamed(navLinks.linkGamesScreen);
-          }
+        backgroundColor: _funColor,
+      body: new Container(
+        decoration: new BoxDecoration(
+          image: new DecorationImage(
+            image: new AssetImage("assets/images/backgrounds/funaur_bg.png"),
           ),
-          new FlatButton(
-              child: new Text("Radio"),
-              onPressed:(){
-                Navigator.of(context).pushNamed(navLinks.linkRadioScreen);
-              }
-          ),
-          new FlatButton(
-              child: new Text("Web"),
-              onPressed:(){
-                Navigator.of(context).pushNamed(navLinks.linkWebScreen);
-              }
-          ),
-        ]
+        ),
+          child: new Column(
+              children: <Widget>[
+                new FlatButton(
+                    child: new Text("Games"),
+                    onPressed:(){
+                      Navigator.of(context).pushNamed(navLinks.linkGamesScreen);
+                    }
+                ),
+                new FlatButton(
+                    child: new Text("Radio"),
+                    onPressed:(){
+                      Navigator.of(context).pushNamed(navLinks.linkRadioScreen);
+                    }
+                ),
+                new FlatButton(
+                    child: new Text("Web"),
+                    onPressed:(){
+                      Navigator.of(context).pushNamed(navLinks.linkWebScreen);
+                    }
+                ),
+              ]
+          )
       )
     );
   }

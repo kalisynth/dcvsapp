@@ -11,6 +11,7 @@ class OptionsState extends State<OptionsScreen>{
   String tabletName;
 
   String tag = "OPTIONS";
+  final _optionsColor = DefaultSettings().optionsColor;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
@@ -77,14 +78,7 @@ class OptionsState extends State<OptionsScreen>{
 
     return new Scaffold(
       key: _scaffoldKey,
-      appBar: new AppBar(
-        title: new Text("Options"),
-        backgroundColor: Colors.redAccent,
-        textTheme: Theme.of(context).textTheme.apply(
-            bodyColor: Colors.black
-        ),
-      ),
-      backgroundColor: Colors.redAccent,
+      backgroundColor: _optionsColor,
       body: new Container(
           decoration: new BoxDecoration(
               image: new DecorationImage(

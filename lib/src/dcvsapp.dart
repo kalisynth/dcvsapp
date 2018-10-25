@@ -18,6 +18,7 @@ import 'package:flutter_appavailability/flutter_appavailability.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:location/location.dart';
 import 'package:simple_permissions/simple_permissions.dart';
+import 'package:fluttery_audio/fluttery_audio.dart';
 //--------------------------------------------------------------------
 //Google imports-------------------------------------------------
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -90,6 +91,7 @@ class DCVSAPP extends StatelessWidget{
         navLinks.linkOptionsScreen : (BuildContext context) => new OptionsScreen(),
         navLinks.linkFunScreen : (BuildContext context) => new FunScreen(),
         navLinks.linkGamesScreen : (BuildContext context) => new GamesScreen(),
+        navLinks.linkRadioScreen : (BuildContext context) => new RadioScreen(),
       }
     );
   }

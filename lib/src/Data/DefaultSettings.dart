@@ -5,10 +5,10 @@ class DefaultSettings{
   final double defaultButtonHeight = 10.0;
   final double defaultButtonWidth = 30.0;
   final String defaultTabletName = "Not Set";
-  final Color chatColor = Colors.green;
+  final Color chatColor = new Color(Utils().hexToInt("FFCFF09E")); //sunlit sea
   final Color homeColor = Colors.lightBlueAccent;
-  final Color funColor = Colors.amberAccent;
-  final Color optionsColor = Colors.redAccent;
+  final Color funColor = new Color(Utils().hexToInt("FFEFFAB4")); //honey-do
+  final Color optionsColor = new Color(Utils().hexToInt("FFF56991")); //watermillion
   final Color gamesBGColor = Colors.green;
   final Color gamesFontColor = Colors.yellow;
   final Color radioBGColor = Colors.yellow;
