@@ -69,7 +69,9 @@ class ChatState extends State<ChatScreen> {
                       new Checkbox(
                         value: checkValue,
                         onChanged: (bool newValue) {
-                          checkValue = newValue;
+                          setState(() {
+                            checkValue = newValue;
+                          });
                         },
                       )
                     ]),
@@ -187,7 +189,7 @@ class ChatState extends State<ChatScreen> {
         decoration: new BoxDecoration(
             image: new DecorationImage(
                 image:
-                    new AssetImage("assets/images/backgrounds/chataur_bg.png"))),
+                    new AssetImage("assets/images/backgrounds/chat_bg.png"))),
         child: buildContent(),
       ),
       bottomNavigationBar: new Padding(
@@ -286,5 +288,10 @@ class ChatState extends State<ChatScreen> {
     } catch (e) {
       print("[$TAG : ERROR] - Insert Contact Exception : $e");
     }
+  }
+
+  void addDcvsContacts() async{
+    contactStore = new ContactStore.forUser(user: user);
+
   }
 }

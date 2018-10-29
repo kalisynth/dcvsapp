@@ -35,12 +35,14 @@ class FunState extends State<FunScreen>{
     return new Scaffold(
         backgroundColor: _funColor,
       body: new Container(
+          width: double.infinity,
         decoration: new BoxDecoration(
           image: new DecorationImage(
-            image: new AssetImage("assets/images/backgrounds/funaur_bg.png"),
+            image: new AssetImage("assets/images/backgrounds/fun_bg.png"),
           ),
         ),
           child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 new FlatButton(
                     child: new Text("Games"),

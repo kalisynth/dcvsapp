@@ -79,13 +79,7 @@ class OptionsState extends State<OptionsScreen>{
     return new Scaffold(
       key: _scaffoldKey,
       backgroundColor: _optionsColor,
-      body: new Container(
-          decoration: new BoxDecoration(
-              image: new DecorationImage(
-                  image: new AssetImage("assets/images/backgrounds/options_bg.png")
-              )
-          ),
-          child: new Column(
+      body: new Column(
               children: <Widget>[
                 new Text('Tablet Name is $tabletName'),
                 new MaterialButton(
@@ -103,7 +97,6 @@ class OptionsState extends State<OptionsScreen>{
                 ),
               ]
           )
-      ),
     );
   }
 

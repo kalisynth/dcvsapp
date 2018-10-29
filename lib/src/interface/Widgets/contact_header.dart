@@ -11,7 +11,7 @@ class ContactHeaderWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     final List<Widget> children = <Widget>[];
-    children.add(new Text("Name | Skype Id | Service Provider"));
+    children.add(new Text("Name | Skype Id | Service Provider", style: Theme.of(context).textTheme.headline));
 
     return new Padding(
       padding: new EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),

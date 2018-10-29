@@ -26,19 +26,27 @@ class _SkypeWidgetState extends State<SkypeWidget>{
           child: new Row(
             children: <Widget>[
               new CircleAvatar(
-                radius: 40.0,
+                radius: 75.0,
                 backgroundColor: widget.contact.serviceProvider ? Colors.blue : Colors.amberAccent,
-                child: new Text(widget.contact.skypeName),
+                child: new Text(widget.contact.skypeName, style: Theme.of(context).textTheme.title),
               ),
+              new Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+              ),
+              new Text(" | ", style: Theme.of(context).textTheme.title),
+              new Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+              ),
+              new Text(widget.contact.skypeId, style: Theme.of(context).textTheme.title),
               new Padding(
                 padding: const EdgeInsets.only(left: 20.0),
               ),
-              new Text(widget.contact.skypeId),
+              new Text(" | ", style: Theme.of(context).textTheme.title),
               new Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 10.0),
               ),
               new Text(
-                widget.contact.serviceProvider ? "N / A" : widget.contact.serviceProviderName,
+                widget.contact.serviceProvider ? "N / A" : widget.contact.serviceProviderName, style: Theme.of(context).textTheme.title
               ),
             ]
           ),
