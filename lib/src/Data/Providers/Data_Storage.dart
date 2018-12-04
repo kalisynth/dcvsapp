@@ -8,7 +8,7 @@ final CollectionReference skypeCollection = db.collection('contacts');
 final CollectionReference gameCollection = db.collection('games');
 
 class GeneralStorage{
-  String TAG = "GENERALSTORE";
+  static const String TAG = "GENERALSTORE";
 
   Stream<QuerySnapshot> generateListFromCollection(CollectionReference collection, {int offset, int limit}){
     Stream<QuerySnapshot> snapshots = collection.snapshots();
@@ -96,13 +96,13 @@ class DeviceStore{
     return db.runTransaction(createTransaction)
         .then(_fromMap)
         .catchError((e){
-      print('dart error: $e');
+      print('[$TAG: ERROR] dart error: $e');
       return null;
     });
   }
 
-  Future<bool> deleteDevice(String Id) async{
-    return GeneralStorage().deleteFromCollection(deviceCollection, Id);
+  Future<bool> deleteDevice(String id) async{
+    return GeneralStorage().deleteFromCollection(deviceCollection, id);
   }
 
   Future<bool> updateDevice(DeviceItem item) async{
@@ -157,7 +157,7 @@ class DeviceStore{
 class UserStore{
   final FirebaseUser user;
 
-  String TAG = 'USERSTORE';
+  static const String TAG = 'USERSTORE';
 
   UserStore.forUser({
     @required this.user

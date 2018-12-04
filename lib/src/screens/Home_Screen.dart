@@ -53,7 +53,7 @@ class MainScreenState extends State<MainScreen>with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context){
     return new DefaultTabController(
-        length: 4,
+        length: 3,
         child: Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(
@@ -95,21 +95,9 @@ class MainScreenState extends State<MainScreen>with SingleTickerProviderStateMix
                 Tab(child: new Row(
                     children:<Widget>[
                       new Icon(Icons.games, size: iconSizeDbl),
-                      new Text("Fun",
+                      new Text("Radio",
                         style: new TextStyle(
                           color: Colors.amberAccent,
-                        ),
-                        textScaleFactor: textScaleDbl,
-                      ),
-                      Padding(padding: const EdgeInsets.only(right: tabPadding)),
-                    ]
-                ),),
-                Tab(child: new Row(
-                    children:<Widget>[
-                      new Icon(Icons.settings, size: iconSizeDbl),
-                      new Text("Options",
-                        style: new TextStyle(
-                          color: Colors.redAccent,
                         ),
                         textScaleFactor: textScaleDbl,
                       ),
@@ -124,7 +112,6 @@ class MainScreenState extends State<MainScreen>with SingleTickerProviderStateMix
                 new HomeScreen(),
                 new ChatScreen(),
                 new FunScreen(),
-                new OptionsScreen(),
               ]
           ),
         )
@@ -172,7 +159,7 @@ class MainScreenStateNoSwipe extends State<MainScreen>with SingleTickerProviderS
   @override
   Widget build(BuildContext context){
     return new DefaultTabController(
-        length: 4,
+        length: 3,
         child: Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(

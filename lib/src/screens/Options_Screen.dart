@@ -26,8 +26,8 @@ class OptionsState extends State<OptionsScreen>{
 
 
   void uiSetup() async{
-    buttonHeight = await dcvsSyncs.getSharedDouble(dcvsKeys.key_buttonheight);
-    buttonMinWidth = await dcvsSyncs.getSharedDouble(dcvsKeys.key_buttonWidth);
+    buttonHeight = await dcvsSyncs.getSharedDouble(dcvsKeys.keyButtonHeight);
+    buttonMinWidth = await dcvsSyncs.getSharedDouble(dcvsKeys.keyButtonWidth);
     if(buttonHeight == null){
       buttonHeight = 50.0;
     }
@@ -57,7 +57,7 @@ class OptionsState extends State<OptionsScreen>{
   Widget build(BuildContext context){
 
     void setSwipe() async{
-      bool swipeEnabled = await dcvsSyncs.getSharedBool(dcvsKeys.key_swipeToNav);
+      bool swipeEnabled = await dcvsSyncs.getSharedBool(dcvsKeys.keySwipeToNav);
       Utils().printInfo(tag, "Swipe $swipeEnabled");
       bool swipeSet;
 
@@ -66,9 +66,9 @@ class OptionsState extends State<OptionsScreen>{
       }
 
       if(swipeEnabled){
-        swipeSet = await dcvsSyncs.setSharedBool(dcvsKeys.key_swipeToNav, false);
+        swipeSet = await dcvsSyncs.setSharedBool(dcvsKeys.keySwipeToNav, false);
       } else {
-        swipeSet = await dcvsSyncs.setSharedBool(dcvsKeys.key_swipeToNav, true);
+        swipeSet = await dcvsSyncs.setSharedBool(dcvsKeys.keySwipeToNav, true);
       }
 
       if(swipeSet){

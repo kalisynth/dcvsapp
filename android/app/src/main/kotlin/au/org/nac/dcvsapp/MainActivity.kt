@@ -22,7 +22,7 @@ class MainActivity(): FlutterActivity() {
     super.onCreate(savedInstanceState)
     GeneratedPluginRegistrant.registerWith(this)
 
-      MethodChannel(flutterView, CHANNEL).setMethodCallHandler{call, result ->
+      /*MethodChannel(flutterView, CHANNEL).setMethodCallHandler{call, result ->
           if(call.method == "openSkype"){
               openSkype()
           } else if(call.method == "callContact"){
@@ -34,7 +34,7 @@ class MainActivity(): FlutterActivity() {
                   println("Skype Call Error: $e")
               }
           }
-      }
+      }*/
   }
 
 

@@ -42,8 +42,8 @@ class GamesState extends State<GamesScreen>{
   ];
 
   void uiSetup() async{
-    buttonHeight = await dcvsSyncs.getSharedDouble(dcvsKeys.key_buttonheight);
-    buttonMinWidth = await dcvsSyncs.getSharedDouble(dcvsKeys.key_buttonWidth);
+    buttonHeight = await dcvsSyncs.getSharedDouble(dcvsKeys.keyButtonHeight);
+    buttonMinWidth = await dcvsSyncs.getSharedDouble(dcvsKeys.keyButtonWidth);
     if(buttonHeight == null){
       buttonHeight = 50.0;
     }

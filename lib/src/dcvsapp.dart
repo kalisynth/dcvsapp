@@ -77,7 +77,7 @@ class DCVSAPP extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return new MaterialApp(
-      title: "DCVS Connect",
+      title: "Aurous Plus",
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
         fontFamily: 'Roboto',
